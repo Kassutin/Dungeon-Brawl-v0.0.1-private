@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var speed = 150
 @export var roll_speed = 200
 
+@export var player_hp = 3
+
 var is_rolling = false
 
 func get_input(): # Function for checking input. Will be called later every physics tick
@@ -28,7 +30,14 @@ func check_roll():
 		sword_area.set_deferred("monitoring", false)
 		sword_pivot.set_process(false)
 		
-		
+
+func take_damage():
+	var sprite = $AnimatedSprite2D 
+	player_hp -= 1
+	print("I took damage")
+	sprite.play("Damage")
+	await $AnimatedSprite2D.animation_finished
+	
 func _update_animations():
 	var sprite = $AnimatedSprite2D 
 	

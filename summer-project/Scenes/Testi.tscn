@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://nc1frm0dfo10"]
+[gd_scene load_steps=37 format=3 uid="uid://nc1frm0dfo10"]
 
 [ext_resource type="Script" uid="uid://cbfhbguv4b3b5" path="res://Scripts/testi.gd" id="1_8uk8m"]
 [ext_resource type="Texture2D" uid="uid://c7u7qbf2u51p5" path="res://Sprites/goblin_.png" id="2_8uk8m"]
@@ -8,6 +8,10 @@ size = Vector2(26, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq11d"]
 size = Vector2(26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqmrs"]
+atlas = ExtResource("2_8uk8m")
+region = Rect2(48, 96, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2igvo"]
 atlas = ExtResource("2_8uk8m")
@@ -133,6 +137,9 @@ region = Rect2(72, 0, 24, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wqmrs")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2igvo")
 }, {
 "duration": 1.0,
@@ -242,28 +249,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Goblin" type="CharacterBody2D" unique_id=881313960]
+[node name="Goblin" type="CharacterBody2D"]
 position = Vector2(80, 24)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8uk8m")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1037131943]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=576381996]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_8uk8m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=40561067]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qq11d")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1903980041]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=58762430]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_65xkx")
-animation = &"Move"
+animation = &"Death"
 autoplay = "default"
 
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

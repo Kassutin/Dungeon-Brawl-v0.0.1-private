@@ -1,32 +1,38 @@
 extends CharacterBody2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
-@export var speed: float = 50.0
-@export var player: Node2D # Assign your Player node in the Inspector
-
-@export var health = 2
+@export var speed: float = 100.0
+@export var player: Node2D # Knows which node to navigate towardss
+@export var health = 3
 var stop_update = false
 
 func die():
+	set_physics_process(false)
+	$CollisionShape2D.queue_free()
+	velocity = Vector2.ZERO
+	
 	var sprite = $AnimatedSprite2D 
 	sprite.play("Death")
 	stop_update = true
 	await $AnimatedSprite2D.animation_finished
-	stop_update = false
 	
-
+	stop_update = false
+	queue_free()
+	
 func take_damage():
-	health =- 1
-	print("ouch")
-	var sprite = $AnimatedSprite2D 
-	sprite.play("Hit")
-	stop_update = true
-	await $AnimatedSprite2D.animation_finished
-	stop_update = false
+	health -= 1
+	print("ouch")	#Testing purposes
+	var sprite = $AnimatedSprite2D
 	
-	if health != 0:
+	if health <= 0:
 		die()
-		
+	
+	else:
+		stop_update = true
+		sprite.play("Hit")
+		await sprite.animation_finished
+		stop_update = false
+
 func _update_animations():
 	var sprite = $AnimatedSprite2D 
 		
