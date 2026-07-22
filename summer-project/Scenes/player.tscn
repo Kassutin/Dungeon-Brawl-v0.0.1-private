@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bb0djluij8jl6"]
+[gd_scene format=3 uid="uid://bb0djluij8jl6"]
 
 [ext_resource type="Script" uid="uid://bys0o1cp6blsc" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dg7nyslle8r12" path="res://Sprites/knight.png" id="2_6t5aa"]
@@ -239,41 +239,42 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(15, 21)
+size = Vector2(12, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
-size = Vector2(15.999998, 5.999998)
+size = Vector2(17, 5.999999)
 
-[node name="Player" type="CharacterBody2D"]
-collision_mask = 4
+[node name="Player" type="CharacterBody2D" unique_id=466446130]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_cvnsp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1799946445]
 sprite_frames = SubResource("SpriteFrames_0f4wt")
-animation = &"Damage"
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1738325731]
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_vgqql")
 
-[node name="SwordPivot" type="Node2D" parent="."]
+[node name="SwordPivot" type="Node2D" parent="." unique_id=1025210127]
 position = Vector2(1, 3)
 script = ExtResource("3_6t5aa")
 
-[node name="Sword" type="Area2D" parent="SwordPivot"]
+[node name="Sword" type="Area2D" parent="SwordPivot" unique_id=840690522]
 position = Vector2(20, -1)
-collision_mask = 14
+collision_layer = 2
+collision_mask = 4
 
-[node name="SwordSprite" type="Sprite2D" parent="SwordPivot/Sword"]
+[node name="SwordSprite" type="Sprite2D" parent="SwordPivot/Sword" unique_id=1078655159]
 position = Vector2(0, -4.7683716e-07)
 rotation = 0.7853982
 scale = Vector2(0.042, 0.04)
 skew = -0.116937056
 texture = ExtResource("4_vgqql")
 
-[node name="SwordHB" type="CollisionShape2D" parent="SwordPivot/Sword"]
-position = Vector2(3, 0)
+[node name="SwordHB" type="CollisionShape2D" parent="SwordPivot/Sword" unique_id=2127021559]
+position = Vector2(3.5, -4.7683716e-07)
 scale = Vector2(1.0000001, 1)
 shape = SubResource("RectangleShape2D_fkybt")
 

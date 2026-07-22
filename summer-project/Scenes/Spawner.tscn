@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://wf4h3p1y32bn"]
+
+[ext_resource type="Script" uid="uid://b43vpwmsjiq3e" path="res://Scripts/spawner.gd" id="1_ohbek"]
+[ext_resource type="PackedScene" uid="uid://nc1frm0dfo10" path="res://Scenes/Goblin.tscn" id="2_i7cfr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohbek"]
+radius = 21.023796
+
+[node name="Spawner" type="Node2D" unique_id=878058544]
+script = ExtResource("1_ohbek")
+goblin = ExtResource("2_i7cfr")
+
+[node name="Timer" type="Timer" parent="." unique_id=723529921]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=455672560]
+shape = SubResource("CircleShape2D_ohbek")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
