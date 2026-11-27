@@ -8,7 +8,7 @@ An early-stage prototype of a simple top down action game in Godot.
 - [ ] Sound effects & UI
 - [ ] Enemy variety
 - [ ] Music
-- [ ] 
+
 
 ## Purpose
 Built as a small summer project to practice object oriented programming, project management and Git. Project is still under works on the sideline along my studies
