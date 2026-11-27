@@ -1,4 +1,4 @@
-# Dungeon Brawl 🚧 (Early Prototype)
+# Dungeon Brawl (Early Prototype)
 
 An early-stage prototype of a simple top down action game in Godot.
 
